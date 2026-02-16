@@ -24,6 +24,7 @@ import {
 } from './eliteComponents';
 import ReviewsSection from './UltraPremiumReviews';
 import ProductCard from './components/ProductCard';
+import ConsultationSection from './components/ConsultationSection';
 
 // --- FIREBASE ---
 const firebaseConfig = {
@@ -1345,6 +1346,9 @@ function AtelierApp() {
 
       {/* RESEÑAS */}
       <ReviewsSection />
+
+      {/* CONSULTATION SECTION */}
+      <ConsultationSection />
 
       {/* CART */}
       <AnimatePresence>
