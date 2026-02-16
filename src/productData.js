@@ -15,6 +15,7 @@ export const INITIAL_PRODUCTS = [
         intensity: 4,
         family: "Floral Cítrico",
         occasion: "Día/Noche",
+        duration: "12h",
         isNew: true,
         tagline: "Un amanecer siciliano, radiante y eterno."
     },
@@ -29,6 +30,7 @@ export const INITIAL_PRODUCTS = [
         intensity: 3,
         family: "Floral Oriental",
         occasion: "Noche",
+        duration: "10h+",
         tagline: "La elegancia atemporal de París en una gota."
     },
     {
@@ -42,6 +44,7 @@ export const INITIAL_PRODUCTS = [
         intensity: 5,
         family: "Oriental",
         occasion: "Noche",
+        duration: "10h+",
         isBestseller: true,
         tagline: "El misterio seductor de una noche estrellada."
     },
@@ -56,6 +59,7 @@ export const INITIAL_PRODUCTS = [
         intensity: 4,
         family: "Floral Contemporáneo",
         occasion: "Día/Noche",
+        duration: "12h",
         tagline: "Un horizonte de posibilidades infinitas y feminidad radiante."
     },
     {
@@ -69,6 +73,7 @@ export const INITIAL_PRODUCTS = [
         intensity: 5,
         family: "Floral Amaderado",
         occasion: "Noche",
+        duration: "10h+",
         tagline: "La profundidad de un encuentro inolvidable."
     },
     {
@@ -82,6 +87,7 @@ export const INITIAL_PRODUCTS = [
         intensity: 3,
         family: "Floral Cítrico",
         occasion: "Primavera",
+        duration: "8h",
         tagline: "Un ramo fresco bañado por la luz del sol."
     },
 
@@ -96,6 +102,7 @@ export const INITIAL_PRODUCTS = [
         intensity: 3,
         family: "Cítrico Aromático",
         occasion: "Día",
+        duration: "8h",
         tagline: "La brisa fresca de la montaña en tu piel."
     },
     {
@@ -122,6 +129,7 @@ export const INITIAL_PRODUCTS = [
         intensity: 5,
         family: "Oriental Gourmand",
         occasion: "Noche",
+        duration: "10h+",
         tagline: "Un diamante negro de pasión y misterio."
     },
     {
@@ -135,6 +143,7 @@ export const INITIAL_PRODUCTS = [
         intensity: 5,
         family: "Cuero",
         occasion: "Noche",
+        duration: "10h+",
         tagline: "La elegancia oscura de la medianoche."
     },
     {
@@ -148,6 +157,7 @@ export const INITIAL_PRODUCTS = [
         intensity: 4,
         family: "Oriental Amaderado",
         occasion: "Invierno",
+        duration: "12h+",
         tagline: "Un elixir dorado de calidez y lujo."
     },
     {
@@ -161,6 +171,7 @@ export const INITIAL_PRODUCTS = [
         intensity: 5,
         family: "Chipre",
         occasion: "Formal",
+        duration: "10h+",
         tagline: "Profundidad y carácter en cada gota."
     },
     {
@@ -174,6 +185,7 @@ export const INITIAL_PRODUCTS = [
         intensity: 3,
         family: "Floral Aldehídico",
         occasion: "Día",
+        duration: "8h",
         tagline: "Pura, abstracta y etéreamente bella."
     },
     {
@@ -200,6 +212,7 @@ export const INITIAL_PRODUCTS = [
         intensity: 3,
         family: "Acuático",
         occasion: "Verano",
+        duration: "6h",
         tagline: "La frescura revitalizante del océano profundo."
     },
     {
@@ -212,6 +225,7 @@ export const INITIAL_PRODUCTS = [
         intensity: 4,
         family: "Verde",
         occasion: "Primavera",
+        duration: "8h",
         tagline: "Naturaleza indómita y elegancia verde."
     },
     {
@@ -224,6 +238,7 @@ export const INITIAL_PRODUCTS = [
         intensity: 3,
         family: "Cítrico Solar",
         occasion: "Día",
+        duration: "8h",
         tagline: "Un rayo de sol capturado en cristal."
     },
     // ─── MASCULINO ───
@@ -251,6 +266,7 @@ export const INITIAL_PRODUCTS = [
         intensity: 4,
         family: "Chipre Floral",
         occasion: "Noche",
+        duration: "10h+",
         tagline: "Una rosa con espinas, bella y peligrosa."
     },
     {
@@ -264,6 +280,7 @@ export const INITIAL_PRODUCTS = [
         intensity: 4,
         family: "Frutal Gourmand",
         occasion: "Noche",
+        duration: "10h+",
         tagline: "Tentación frutal irresistible."
     },
     {
@@ -277,6 +294,7 @@ export const INITIAL_PRODUCTS = [
         intensity: 3,
         family: "Floral Ámbar",
         occasion: "Verano",
+        duration: "6h",
         tagline: "El sol eterno en una fragancia."
     },
     {
@@ -290,6 +308,7 @@ export const INITIAL_PRODUCTS = [
         intensity: 3,
         family: "Almizcle Floral",
         occasion: "Día",
+        duration: "8h",
         tagline: "La suavidad del ante blanco."
     },
     {
@@ -303,6 +322,7 @@ export const INITIAL_PRODUCTS = [
         intensity: 5,
         family: "Amaderado",
         occasion: "Noche",
+        duration: "10h+",
         tagline: "Poder y magnetismo en estado puro."
     },
     {
@@ -316,6 +336,7 @@ export const INITIAL_PRODUCTS = [
         intensity: 4,
         family: "Especiado",
         occasion: "Invierno",
+        duration: "12h+",
         tagline: "Un legado de reyes, cálido y profundo."
     },
     {
@@ -329,6 +350,7 @@ export const INITIAL_PRODUCTS = [
         intensity: 3,
         family: "Floral Cítrico",
         occasion: "Verano",
+        duration: "6h",
         tagline: "Un viaje a la costa italiana."
     },
     {
@@ -342,6 +364,7 @@ export const INITIAL_PRODUCTS = [
         intensity: 5,
         family: "Oriental Amaderado",
         occasion: "Noche",
+        duration: "10h+",
         tagline: "Lujo oriental en su máxima expresión."
     },
     {
@@ -355,6 +378,7 @@ export const INITIAL_PRODUCTS = [
         intensity: 4,
         family: "Amaderado Especiado",
         occasion: "Noche",
+        duration: "10h+",
         tagline: "Misterio y elegancia bajo la luna."
     },
     {
@@ -368,6 +392,7 @@ export const INITIAL_PRODUCTS = [
         intensity: 3,
         family: "Amaderado Verde",
         occasion: "Día",
+        duration: "8h",
         tagline: "La frescura salvaje de la naturaleza."
     },
     {
@@ -381,6 +406,7 @@ export const INITIAL_PRODUCTS = [
         intensity: 4,
         family: "Oriental",
         occasion: "Noche",
+        duration: "10h+",
         tagline: "El resplandor dorado del ámbar puro."
     },
     {
@@ -407,6 +433,7 @@ export const INITIAL_PRODUCTS = [
         intensity: 5,
         family: "Cuero",
         occasion: "Noche",
+        duration: "10h+",
         tagline: "Cuero toscano, suave y salvaje."
     },
     {
@@ -433,6 +460,7 @@ export const INITIAL_PRODUCTS = [
         intensity: 5,
         family: "Cuero",
         occasion: "Fiesta",
+        duration: "10h+",
         tagline: "Exclusivo, audaz y fabuloso."
     },
     {
@@ -446,6 +474,7 @@ export const INITIAL_PRODUCTS = [
         intensity: 5,
         family: "Cuero",
         occasion: "Invierno",
+        duration: "12h+",
         tagline: "Carácter fuerte y sofisticación clásica."
     },
 
@@ -455,13 +484,14 @@ export const INITIAL_PRODUCTS = [
     {
         id: "v_1",
         name: "Mist Patagónico",
-        category: "vela",
+        category: "home-deco",
         price: 32000,
         image: "https://i.ibb.co/Q72nMGB0/Chat-GPT-Image-15-ene-2026-08-43-38-a-m.png",
         notes: { top: "Pino", heart: "Eucalipto", base: "Madera" },
         intensity: 3,
         family: "Verde",
         occasion: "Hogar",
+        duration: "40h",
         tagline: "El respiro fresco del bosque austral en tu hogar."
     },
     {
@@ -474,6 +504,7 @@ export const INITIAL_PRODUCTS = [
         intensity: 4,
         family: "Especiado",
         occasion: "Hogar",
+        duration: "40h",
         tagline: "Calidez vibrante y acogedora para tu refugio."
     },
     {
@@ -486,6 +517,7 @@ export const INITIAL_PRODUCTS = [
         intensity: 4,
         family: "Gourmand",
         occasion: "Relax",
+        duration: "40h",
         tagline: "Un abrazo cálido de dulzura sofisticada y envolvente."
     },
     {
@@ -498,6 +530,7 @@ export const INITIAL_PRODUCTS = [
         intensity: 3,
         family: "Floral",
         occasion: "Primavera",
+        duration: "8h",
         tagline: "La delicadeza de un jardín secreto en plena floración."
     },
     {
@@ -510,6 +543,7 @@ export const INITIAL_PRODUCTS = [
         intensity: 5,
         family: "Amaderado",
         occasion: "Invierno",
+        duration: "12h+",
         tagline: "Elegancia masculina y calidez de chimenea para tu hogar."
     },
     {
@@ -522,6 +556,7 @@ export const INITIAL_PRODUCTS = [
         intensity: 4,
         family: "Cítrico",
         occasion: "Día",
+        duration: "8h",
         tagline: "Energía vibrante que ilumina y purifica el ambiente."
     },
     {
@@ -534,6 +569,7 @@ export const INITIAL_PRODUCTS = [
         intensity: 4,
         family: "Verde",
         occasion: "Hogar",
+        duration: "40h",
         tagline: "La serenidad inmensa de un bosque antiguo tras la lluvia."
     },
     {
@@ -546,6 +582,7 @@ export const INITIAL_PRODUCTS = [
         intensity: 5,
         family: "Oriental",
         occasion: "Noche",
+        duration: "10h+",
         tagline: "Misterio y sensualidad para veladas inolvidables."
     },
     {
@@ -582,6 +619,7 @@ export const INITIAL_PRODUCTS = [
         intensity: 3,
         family: "Frutal Verde",
         occasion: "Verano",
+        duration: "6h",
         tagline: "Sofisticación frutal con un toque verde y lechoso."
     },
     {
@@ -606,6 +644,7 @@ export const INITIAL_PRODUCTS = [
         intensity: 4,
         family: "Cítrico Frutal",
         occasion: "Fiesta",
+        duration: "10h+",
         tagline: "Un cóctel refrescante en una playa paradisíaca."
     },
     {
@@ -618,6 +657,7 @@ export const INITIAL_PRODUCTS = [
         intensity: 3,
         family: "Gourmand Tropical",
         occasion: "Verano",
+        duration: "6h",
         tagline: "La cremosidad exótica del coco bajo el sol."
     }
 ];

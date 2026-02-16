@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef, useMemo, useCallback, createContext, useContext, Suspense } from 'react';
+import { createPortal } from 'react-dom';
 import { motion, AnimatePresence, useScroll, useTransform, useSpring } from 'framer-motion';
 import {
   ShoppingBag, X, Menu, Star, Minus, Plus, Sparkles as SparklesIcon, Heart,
@@ -18,10 +19,11 @@ import { INITIAL_PRODUCTS } from './productData';
 import {
   AnalyticsProvider, useAnalytics, ErrorBoundaryRoot,
   LuxuryCursor, AromaticParticles, ParallaxSection, ParallaxBackground,
-  UrgencyBanner, ExitIntentPopup, SmartSearch, RecentPurchases,
+  UrgencyBanner, ExitIntentPopup, RecentPurchases,
   StatusBar, ChatWidget, useServiceWorker
 } from './eliteComponents';
 import ReviewsSection from './UltraPremiumReviews';
+import ProductCard from './components/ProductCard';
 
 // --- FIREBASE ---
 const firebaseConfig = {
@@ -682,7 +684,8 @@ const CatalogProvider = ({ children, products }) => {
       res = res.filter(p => p.category === 'perfume');
       if (subSection !== 'all') res = res.filter(p => p.gender === subSection);
     } else if (section === 'velas') {
-      res = res.filter(p => p.category === 'vela');
+      si
+      res = res.filter(p => p.category === 'vela' && !p.id.startsWith('f_') && !p.id.startsWith('m_'));
     } else {
       res = res.filter(p => p.category === section);
     }
@@ -704,6 +707,456 @@ const CatalogProvider = ({ children, products }) => {
     }}>
       {children}
     </CatalogContext.Provider>
+  );
+};
+
+
+
+// ═══════════════════════════════════════════════════════════════════════════
+// 🔍 BUSCADOR INTELIGENTE (SmartSearch)
+// ═══════════════════════════════════════════════════════════════════════════
+
+const SmartSearch = ({ products, onSelect }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [query, setQuery] = useState('');
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const inputRef = useRef(null);
+
+  const results = useMemo(() => {
+    if (!query.trim()) return [];
+    const q = query.toLowerCase();
+    return products.filter(p =>
+      p.name.toLowerCase().includes(q) ||
+      (p.family && p.family.toLowerCase().includes(q)) ||
+      (p.category && p.category.toLowerCase().includes(q)) ||
+      (p.notes?.top && p.notes.top.toLowerCase().includes(q)) ||
+      (p.notes?.heart && p.notes.heart.toLowerCase().includes(q)) ||
+      (p.notes?.base && p.notes.base.toLowerCase().includes(q))
+    ).slice(0, 8);
+  }, [query, products]);
+
+  // Abrir con Ctrl+K o Cmd+K
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        setIsOpen(true);
+      }
+      if (e.key === 'Escape') {
+        setIsOpen(false);
+        setQuery('');
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
+  // Focus automático al abrir
+  useEffect(() => {
+    if (isOpen && inputRef.current) {
+      setTimeout(() => inputRef.current?.focus(), 100);
+    }
+  }, [isOpen]);
+
+  // Navegación con teclado
+  const handleKeyDown = (e) => {
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      setSelectedIndex(prev => Math.min(prev + 1, results.length - 1));
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      setSelectedIndex(prev => Math.max(prev - 1, 0));
+    } else if (e.key === 'Enter' && results[selectedIndex]) {
+      onSelect(results[selectedIndex]);
+      setIsOpen(false);
+      setQuery('');
+    }
+  };
+
+  // Reset del índice seleccionado cuando cambia la query
+  useEffect(() => {
+    setSelectedIndex(0);
+  }, [query]);
+
+  return (
+    <>
+      {/* Botón de búsqueda */}
+      <button
+        onClick={() => setIsOpen(true)}
+        className="flex items-center gap-2 text-stone-400 hover:text-stone-600 transition-colors group"
+        title="Buscar (Ctrl+K)"
+      >
+        <Search size={20} className="group-hover:scale-110 transition-transform" />
+        <span className="hidden md:flex items-center gap-1.5 text-xs text-stone-400 bg-stone-100 px-2.5 py-1 rounded-lg border border-stone-200">
+          <span>Buscar</span>
+          <kbd className="text-[9px] font-mono bg-white px-1.5 py-0.5 rounded border border-stone-200 text-stone-500 shadow-sm">
+            ⌘K
+          </kbd>
+        </span>
+      </button>
+
+      {/* Modal de búsqueda fullscreen */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-[2000] bg-stone-950/80 backdrop-blur-xl flex items-start justify-center pt-[15vh]"
+            onClick={() => { setIsOpen(false); setQuery(''); }}
+          >
+            <motion.div
+              initial={{ opacity: 0, y: -20, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -20, scale: 0.95 }}
+              transition={{ duration: 0.25, ease: [0.25, 0.46, 0.45, 0.94] }}
+              className="bg-white w-full max-w-xl mx-4 rounded-2xl shadow-2xl overflow-hidden border border-stone-200"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Input de búsqueda */}
+              <div className="flex items-center gap-3 px-5 py-4 border-b border-stone-100">
+                <Search size={20} className="text-stone-400 flex-shrink-0" />
+                <input
+                  ref={inputRef}
+                  type="text"
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                  onKeyDown={handleKeyDown}
+                  placeholder="Buscar perfumes, notas, familias..."
+                  className="flex-1 text-base text-stone-900 placeholder:text-stone-400 outline-none bg-transparent"
+                  autoComplete="off"
+                />
+                {query && (
+                  <button
+                    onClick={() => setQuery('')}
+                    className="p-1 rounded-md hover:bg-stone-100 text-stone-400 transition-colors"
+                  >
+                    <X size={16} />
+                  </button>
+                )}
+                <button
+                  onClick={() => { setIsOpen(false); setQuery(''); }}
+                  className="text-[10px] font-bold text-stone-400 bg-stone-100 px-2 py-1 rounded-md border border-stone-200 hover:bg-stone-200 transition-colors"
+                >
+                  ESC
+                </button>
+              </div>
+
+              {/* Resultados */}
+              <div className="max-h-[400px] overflow-y-auto">
+                {query.trim() === '' ? (
+                  /* Estado vacío - sugerencias */
+                  <div className="p-6 text-center">
+                    <div className="w-12 h-12 bg-stone-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                      <Search size={20} className="text-stone-400" />
+                    </div>
+                    <p className="text-sm text-stone-500 mb-1">Buscá por nombre, nota o familia</p>
+                    <p className="text-[10px] text-stone-400">
+                      Probá: "vainilla", "cítrico", "noche"
+                    </p>
+
+                    {/* Búsquedas sugeridas */}
+                    <div className="flex flex-wrap gap-2 justify-center mt-4">
+                      {['Vainilla', 'Cítrico', 'Floral', 'Amaderado', 'Noche'].map(tag => (
+                        <button
+                          key={tag}
+                          onClick={() => setQuery(tag)}
+                          className="text-[10px] font-bold text-stone-500 bg-stone-100 px-3 py-1.5 rounded-full hover:bg-[#C5A059]/10 hover:text-[#C5A059] transition-colors border border-stone-200"
+                        >
+                          {tag}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                ) : results.length === 0 ? (
+                  /* Sin resultados */
+                  <div className="p-8 text-center">
+                    <div className="w-12 h-12 bg-stone-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                      <Search size={20} className="text-stone-300" />
+                    </div>
+                    <p className="text-sm font-bold text-stone-900 mb-1">Sin resultados</p>
+                    <p className="text-xs text-stone-400">
+                      No encontramos productos para "{query}"
+                    </p>
+                  </div>
+                ) : (
+                  /* Lista de resultados */
+                  <div className="py-2">
+                    <p className="px-5 py-2 text-[9px] font-bold uppercase tracking-widest text-stone-400">
+                      {results.length} resultado{results.length !== 1 ? 's' : ''}
+                    </p>
+                    {results.map((product, index) => (
+                      <button
+                        key={product.id}
+                        onClick={() => {
+                          onSelect(product);
+                          setIsOpen(false);
+                          setQuery('');
+                        }}
+                        onMouseEnter={() => setSelectedIndex(index)}
+                        className={`w-full flex items-center gap-4 px-5 py-3 text-left transition-colors ${selectedIndex === index
+                          ? 'bg-[#C5A059]/10'
+                          : 'hover:bg-stone-50'
+                          }`}
+                      >
+                        {/* Imagen miniatura */}
+                        <div className="w-12 h-12 bg-stone-100 rounded-xl overflow-hidden flex-shrink-0">
+                          <img
+                            src={product.image}
+                            alt={product.name}
+                            className="w-full h-full object-contain p-1"
+                          />
+                        </div>
+
+                        {/* Info del producto */}
+                        <div className="flex-1 min-w-0">
+                          <h4 className="font-brand text-base text-stone-900 truncate">
+                            {product.name}
+                          </h4>
+                          <div className="flex items-center gap-2 mt-0.5">
+                            <span className="text-xs font-bold text-[#C5A059]">
+                              {formatPrice(product.price)}
+                            </span>
+                            {product.family && (
+                              <span className="text-[9px] text-stone-400 bg-stone-100 px-2 py-0.5 rounded-full">
+                                {product.family}
+                              </span>
+                            )}
+                            {product.category && (
+                              <span className="text-[9px] text-stone-400 bg-stone-100 px-2 py-0.5 rounded-full capitalize">
+                                {product.category}
+                              </span>
+                            )}
+                          </div>
+                        </div>
+
+                        {/* Indicador de selección */}
+                        <div className={`flex-shrink-0 transition-opacity ${selectedIndex === index ? 'opacity-100' : 'opacity-0'
+                          }`}>
+                          <ChevronRight size={16} className="text-[#C5A059]" />
+                        </div>
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              {/* Footer con atajos */}
+              {results.length > 0 && (
+                <div className="px-5 py-3 border-t border-stone-100 flex items-center gap-4 text-[10px] text-stone-400">
+                  <span className="flex items-center gap-1">
+                    <kbd className="bg-stone-100 px-1.5 py-0.5 rounded border border-stone-200 font-mono">↑↓</kbd>
+                    Navegar
+                  </span>
+                  <span className="flex items-center gap-1">
+                    <kbd className="bg-stone-100 px-1.5 py-0.5 rounded border border-stone-200 font-mono">↵</kbd>
+                    Seleccionar
+                  </span>
+                  <span className="flex items-center gap-1">
+                    <kbd className="bg-stone-100 px-1.5 py-0.5 rounded border border-stone-200 font-mono">esc</kbd>
+                    Cerrar
+                  </span>
+                </div>
+              )}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
+  );
+};
+
+// ═══════════════════════════════════════════════════════════════════════════
+// ☰ MENÚ DRAWER (Hamburguesa)
+// ═══════════════════════════════════════════════════════════════════════════
+
+const MenuDrawer = ({ onNavigate, favorites, cart }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const menuItems = [
+    { id: 'inicio', label: 'Inicio', icon: HomeIcon, action: () => window.scrollTo({ top: 0, behavior: 'smooth' }) },
+    { id: 'catalogo', label: 'Catálogo', icon: Layers, action: () => document.getElementById('catalogo')?.scrollIntoView({ behavior: 'smooth' }) },
+    { id: 'perfumes', label: 'Perfumes', icon: Droplets, action: () => onNavigate('perfumes') },
+    { id: 'velas', label: 'Velas', icon: Flame, action: () => onNavigate('velas') },
+    { id: 'home-deco', label: 'Home & Difusores', icon: HomeIcon, action: () => onNavigate('home-deco') },
+  ];
+
+  const secondaryItems = [
+    { id: 'favoritos', label: `Favoritos (${favorites?.length || 0})`, icon: Heart },
+    { id: 'contacto', label: 'Contacto', icon: Phone },
+    { id: 'instagram', label: 'Instagram', icon: Instagram },
+  ];
+
+  return (
+    <>
+      {/* Botón hamburguesa / 3 puntos */}
+      <button
+        onClick={() => setIsOpen(true)}
+        className="relative w-10 h-10 flex flex-col items-center justify-center gap-[5px] group"
+        aria-label="Abrir menú"
+      >
+        {/* Línea superior */}
+        <span
+          className="block h-[2px] bg-stone-900 rounded-full transition-all duration-300 group-hover:bg-[#C5A059]"
+          style={{ width: '20px' }}
+        />
+        {/* Línea media (más corta) */}
+        <span
+          className="block h-[2px] bg-stone-900 rounded-full transition-all duration-300 group-hover:bg-[#C5A059] group-hover:w-[20px]"
+          style={{ width: '14px' }}
+        />
+        {/* Línea inferior */}
+        <span
+          className="block h-[2px] bg-stone-900 rounded-full transition-all duration-300 group-hover:bg-[#C5A059]"
+          style={{ width: '20px' }}
+        />
+      </button>
+
+      {/* Drawer lateral */}
+      {createPortal(
+        <AnimatePresence>
+          {isOpen && (
+            <>
+              {/* Overlay oscuro */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                onClick={() => setIsOpen(false)}
+                className="fixed inset-0 bg-stone-950/70 backdrop-blur-sm z-[3000]"
+              />
+
+              {/* Panel del menú */}
+              <motion.div
+                initial={{ x: '-100%' }}
+                animate={{ x: 0 }}
+                exit={{ x: '-100%' }}
+                transition={{ type: 'spring', damping: 30, stiffness: 300 }}
+                className="fixed top-0 left-0 h-full w-full max-w-sm bg-white z-[3100] shadow-2xl flex flex-col"
+              >
+                {/* Header del menú */}
+                <div className="flex items-center justify-between px-8 py-7 border-b border-stone-100">
+                  <h2 className="font-brand text-2xl tracking-[0.15em] text-stone-900">
+                    MK AROMAS
+                  </h2>
+                  <button
+                    onClick={() => setIsOpen(false)}
+                    className="w-10 h-10 rounded-full bg-stone-100 flex items-center justify-center text-stone-500 hover:bg-stone-200 hover:text-stone-900 transition-all"
+                  >
+                    <X size={18} />
+                  </button>
+                </div>
+
+                {/* Items principales */}
+                <nav className="flex-1 overflow-y-auto py-4">
+                  <div className="px-4">
+                    <p className="px-4 py-2 text-[9px] font-bold uppercase tracking-[0.3em] text-stone-400">
+                      Explorar
+                    </p>
+                    {menuItems.map((item, index) => (
+                      <motion.button
+                        key={item.id}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: index * 0.05, duration: 0.3 }}
+                        onClick={() => {
+                          item.action?.();
+                          setIsOpen(false);
+                        }}
+                        className="w-full flex items-center gap-4 px-4 py-4 rounded-xl text-left hover:bg-stone-50 transition-all group"
+                      >
+                        <div className="w-10 h-10 bg-stone-100 rounded-xl flex items-center justify-center text-stone-500 group-hover:bg-[#C5A059]/10 group-hover:text-[#C5A059] transition-all">
+                          <item.icon size={18} />
+                        </div>
+                        <span className="text-sm font-bold text-stone-900 group-hover:text-[#C5A059] transition-colors">
+                          {item.label}
+                        </span>
+                        <ChevronRight size={14} className="ml-auto text-stone-300 group-hover:text-[#C5A059] transition-colors" />
+                      </motion.button>
+                    ))}
+                  </div>
+
+                  {/* Separador */}
+                  <div className="my-4 mx-8">
+                    <div className="flex items-center gap-3">
+                      <div className="flex-1 h-[1px] bg-stone-100" />
+                      <div className="w-1.5 h-1.5 rotate-45 bg-[#C5A059]/30" />
+                      <div className="flex-1 h-[1px] bg-stone-100" />
+                    </div>
+                  </div>
+
+                  {/* Items secundarios */}
+                  <div className="px-4">
+                    <p className="px-4 py-2 text-[9px] font-bold uppercase tracking-[0.3em] text-stone-400">
+                      Más
+                    </p>
+                    {secondaryItems.map((item, index) => (
+                      <motion.button
+                        key={item.id}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: (menuItems.length + index) * 0.05, duration: 0.3 }}
+                        onClick={() => {
+                          if (item.id === 'contacto') {
+                            window.open('https://wa.me/5492920674938', '_blank');
+                          } else if (item.id === 'instagram') {
+                            window.open('https://instagram.com', '_blank');
+                          }
+                          setIsOpen(false);
+                        }}
+                        className="w-full flex items-center gap-4 px-4 py-3.5 rounded-xl text-left hover:bg-stone-50 transition-all group"
+                      >
+                        <div className="w-9 h-9 bg-stone-100 rounded-lg flex items-center justify-center text-stone-400 group-hover:bg-[#C5A059]/10 group-hover:text-[#C5A059] transition-all">
+                          <item.icon size={16} />
+                        </div>
+                        <span className="text-sm text-stone-600 group-hover:text-[#C5A059] transition-colors">
+                          {item.label}
+                        </span>
+                      </motion.button>
+                    ))}
+                  </div>
+                </nav>
+
+                {/* Footer del menú */}
+                <div className="px-8 py-6 border-t border-stone-100 bg-stone-50">
+                  {/* CTA de WhatsApp */}
+                  <button
+                    onClick={() => {
+                      window.open('https://wa.me/5492920674938?text=Hola! Quiero consultar sobre sus productos', '_blank');
+                      setIsOpen(false);
+                    }}
+                    className="w-full py-4 bg-gradient-to-r from-stone-900 to-stone-800 text-white rounded-2xl font-bold text-xs uppercase tracking-[0.2em] hover:from-[#C5A059] hover:to-amber-600 transition-all shadow-lg flex items-center justify-center gap-3"
+                  >
+                    <MessageSquare size={16} />
+                    Contactar por WhatsApp
+                  </button>
+
+                  {/* Info de contacto */}
+                  <div className="flex items-center justify-center gap-4 mt-4">
+                    <a href="tel:+5492920674938" className="text-stone-400 hover:text-[#C5A059] transition-colors">
+                      <Phone size={14} />
+                    </a>
+                    <a href="mailto:contacto@mkaromas.com" className="text-stone-400 hover:text-[#C5A059] transition-colors">
+                      <Mail size={14} />
+                    </a>
+                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-stone-400 hover:text-[#C5A059] transition-colors">
+                      <Instagram size={14} />
+                    </a>
+                  </div>
+
+                  <p className="text-center text-[8px] text-stone-400 mt-3 tracking-widest uppercase">
+                    © 2025 MK Aromas — Atelier de Fragancias
+                  </p>
+                </div>
+              </motion.div>
+            </>
+          )}
+        </AnimatePresence>,
+        document.body
+      )}
+    </>
   );
 };
 
@@ -756,8 +1209,16 @@ function AtelierApp() {
 
       {/* NAVBAR */}
       <header className="fixed top-0 left-0 w-full z-50 px-8 py-6 flex justify-between items-center bg-white/80 backdrop-blur-md border-b border-white/20">
-        <div className="flex items-center gap-4">
-          <Menu className="cursor-pointer text-stone-900" />
+        {/* Lado izquierdo: Menú + Buscador */}
+        <div className="flex items-center gap-3">
+          <MenuDrawer
+            onNavigate={(section) => {
+              setActiveSection(section);
+              document.getElementById('catalogo')?.scrollIntoView({ behavior: 'smooth' });
+            }}
+            favorites={favorites}
+            cart={cart}
+          />
           <SmartSearch
             products={INITIAL_PRODUCTS}
             onSelect={(p) => {
@@ -766,9 +1227,16 @@ function AtelierApp() {
             }}
           />
         </div>
-        <h1 className="font-brand text-3xl tracking-[0.2em] text-stone-900 cursor-pointer">
+
+        {/* Centro: Logo */}
+        <h1
+          className="font-brand text-3xl tracking-[0.2em] text-stone-900 cursor-pointer"
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        >
           MK AROMAS
         </h1>
+
+        {/* Lado derecho: Favoritos + Carrito */}
         <div className="flex items-center gap-4">
           <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
             <Heart size={24} className="text-stone-900" />
@@ -858,41 +1326,18 @@ function AtelierApp() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-16">
             {products.map((p, i) => (
-              <ParallaxSection key={p.id} speed={i % 2 === 0 ? 0.05 : -0.05}>
-                <motion.div
-                  whileHover={{ y: -10 }}
-                  className="group cursor-pointer"
-                  onClick={() => {
-                    trackProductView(p);
-                    setQuickViewProduct(p);
-                  }}
-                >
-                  <div className="relative aspect-[3/4] bg-white rounded-[30px] overflow-hidden shadow-sm group-hover:shadow-2xl transition-all border border-stone-100">
-                    <div className="absolute top-4 left-4 z-10 flex flex-col gap-2">
-                      {p.isNew && (
-                        <span className="bg-emerald-500 text-white text-[8px] font-black px-2 py-1 rounded-full uppercase">
-                          Nuevo
-                        </span>
-                      )}
-                      {p.isBestseller && (
-                        <span className="bg-[#C5A059] text-white text-[8px] font-black px-2 py-1 rounded-full uppercase">
-                          Top
-                        </span>
-                      )}
-                    </div>
-                    <OptimizedImage src={p.image} alt={p.name} />
-                    <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-6">
-                      <button className="bg-white text-stone-900 px-6 py-3 rounded-full font-bold text-xs hover:bg-[#C5A059] hover:text-white transition-colors">
-                        Vista Rápida
-                      </button>
-                    </div>
-                  </div>
-                  <div className="mt-4 text-center">
-                    <h3 className="font-brand text-2xl text-stone-900">{p.name}</h3>
-                    <p className="text-[#C5A059] font-bold">{formatPrice(p.price)}</p>
-                  </div>
-                </motion.div>
-              </ParallaxSection>
+              <ProductCard
+                key={p.id}
+                product={p}
+                index={i}
+                onQuickView={(product) => {
+                  trackProductView(product);
+                  setQuickViewProduct(product);
+                }}
+                onAddToCart={onAddToCart}
+                isFavorite={favorites.includes(p.id)}
+                onToggleFavorite={toggleFavorite}
+              />
             ))}
           </div>
         </div>
