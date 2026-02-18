@@ -20,7 +20,7 @@ import {
   AnalyticsProvider, useAnalytics, ErrorBoundaryRoot,
   LuxuryCursor, AromaticParticles, ParallaxSection, ParallaxBackground,
   UrgencyBanner, ExitIntentPopup, RecentPurchases,
-  StatusBar, ChatWidget, useServiceWorker
+  StatusBar
 } from './eliteComponents';
 import ReviewsSection from './UltraPremiumReviews';
 import ProductCard from './components/ProductCard';
@@ -1195,7 +1195,7 @@ function AtelierApp() {
       <AromaticParticles />
       <ScrollToTopButton />
       <StatusBar />
-      <ChatWidget products={INITIAL_PRODUCTS} />
+
 
 
       {/* TOAST */}
