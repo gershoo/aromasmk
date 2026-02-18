@@ -131,30 +131,30 @@ const ConsultationSection = () => {
             id: 'whatsapp',
             icon: MessageCircle,
             title: "WhatsApp",
-            subtitle: "Respuesta inmediata",
-            description: "Chateá directamente con nuestro equipo de asesores expertos para una atención VIP.",
-            action: () => window.open('https://wa.me/5492920674938?text=Hola! Quiero asesoramiento sobre perfumes', '_blank'),
-            badge: "Online ahora",
+            subtitle: "Asesoría Real",
+            description: "Chateá directo conmigo para recibir una recomendación honesta y a tu medida.",
+            action: () => window.open('https://wa.me/5492920674938?text=Hola!%20Me%20gustar%C3%ADa%20que%20me%20ayuden%20a%20elegir%20un%20perfume.', '_blank'),
+            badge: "En línea",
             badgeColor: "bg-emerald-500"
         },
         {
             id: 'facebook',
             icon: Facebook,
             title: "Facebook",
-            subtitle: "Comunidad Oficial",
-            description: "Sumate a nuestro espacio exclusivo. Reseñas detalladas, eventos y conexión con otros amantes de los aromas.",
+            subtitle: "Novedades y Opiniones",
+            description: "Enterate de lo que dicen otros clientes y no te pierdas ningún lanzamiento.",
             action: () => window.open('https://www.facebook.com/profile.php?id=61580521685802', '_blank'),
-            badge: "Me Gusta",
+            badge: "Comunidad",
             badgeColor: "bg-[#1877F2]"
         },
         {
             id: 'instagram',
             icon: Instagram,
             title: "Instagram",
-            subtitle: "Visuals & Drops",
-            description: "Inspiración diaria. Seguinos para enterarte antes que nadie de los lanzamientos limitados.",
+            subtitle: "Inspiración",
+            description: "Fotos reales de los productos, stories diarias y lanzamientos exclusivos.",
             action: () => window.open('https://instagram.com/mkaromas', '_blank'),
-            badge: "Seguir",
+            badge: "Seguinos",
             badgeColor: "bg-gradient-to-r from-purple-500 to-pink-500"
         }
     ];
@@ -242,21 +242,10 @@ const ConsultationSection = () => {
                             transition={{ duration: 0.6, delay: 0.3 }}
                             className="font-brand text-5xl md:text-7xl lg:text-8xl text-white leading-[0.95] mb-8"
                         >
-                            Encontrá Tu{' '}
-                            <span className="relative inline-block">
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#E5D1A1] via-[#C5A059] to-[#E5D1A1]"
-                                    style={{ backgroundSize: '200% 200%', animation: 'gradient-x 4s ease infinite' }}>
-                                    Fragancia
-                                </span>
-                                <motion.div
-                                    initial={{ scaleX: 0 }}
-                                    whileInView={{ scaleX: 1 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: 0.8, duration: 0.8, ease: "easeOut" }}
-                                    className="absolute -bottom-2 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#C5A059] to-transparent origin-center"
-                                />
+                            Conectá con <br />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#E5D1A1] via-[#C5A059] to-[#E5D1A1]">
+                                Nosotros
                             </span>
-                            <br />Perfecta
                         </motion.h2>
 
                         <motion.p
@@ -266,8 +255,7 @@ const ConsultationSection = () => {
                             transition={{ duration: 0.6, delay: 0.5 }}
                             className="text-stone-400 text-lg md:text-xl font-light max-w-2xl mx-auto leading-relaxed"
                         >
-                            Cada aroma cuenta una historia diferente. Nuestros expertos te guían
-                            para descubrir la nota olfativa que <span className="text-[#C5A059]">define tu esencia</span>.
+                            Estamos acá para asesorarte. Elegí tu canal favorito y sumate al mundo <span className="text-[#C5A059]">MK Aromas</span>.
                         </motion.p>
                     </div>
 
