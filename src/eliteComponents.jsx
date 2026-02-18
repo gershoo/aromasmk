@@ -48,26 +48,7 @@ export class ErrorBoundaryRoot extends React.Component {
     }
 }
 
-// ═══ LUXURY CURSOR ═══
-export const LuxuryCursor = () => {
-    const cursorRef = useRef(null);
-    const dotRef = useRef(null);
-    useEffect(() => {
-        if (typeof window === 'undefined' || 'ontouchstart' in window) return;
-        const move = (e) => {
-            if (cursorRef.current) cursorRef.current.style.transform = `translate(${e.clientX - 20}px, ${e.clientY - 20}px)`;
-            if (dotRef.current) dotRef.current.style.transform = `translate(${e.clientX - 4}px, ${e.clientY - 4}px)`;
-        };
-        window.addEventListener('mousemove', move);
-        return () => window.removeEventListener('mousemove', move);
-    }, []);
-    return (
-        <div className="hidden md:block pointer-events-none fixed inset-0 z-[9999]">
-            <div ref={cursorRef} className="absolute w-10 h-10 border-2 border-[#C5A059] rounded-full mix-blend-difference transition-transform duration-100 ease-out" />
-            <div ref={dotRef} className="absolute w-2 h-2 bg-[#C5A059] rounded-full mix-blend-difference transition-transform duration-75 ease-out" />
-        </div>
-    );
-};
+
 
 // ═══ AROMATIC PARTICLES ═══
 export const AromaticParticles = () => {

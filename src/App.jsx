@@ -17,8 +17,6 @@ import { getFirestore } from "firebase/firestore";
 import { getAuth, signInAnonymously } from "firebase/auth";
 import { INITIAL_PRODUCTS } from './productData';
 import {
-  AnalyticsProvider, useAnalytics, ErrorBoundaryRoot,
-  LuxuryCursor, AromaticParticles, ParallaxSection, ParallaxBackground,
   UrgencyBanner, ExitIntentPopup, RecentPurchases,
   StatusBar
 } from './eliteComponents';
@@ -1183,15 +1181,14 @@ function AtelierApp() {
   const subtotal = cart.reduce((a, c) => a + c.price * (c.qty || 1), 0);
 
   return (
-    <div className="bg-[#FDFCF8] min-h-screen text-stone-900 font-sans cursor-none selection:bg-[#C5A059] selection:text-white overflow-x-hidden">
+    <div className="bg-[#FDFCF8] min-h-screen text-stone-900 font-sans selection:bg-[#C5A059] selection:text-white overflow-x-hidden">
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Italiana&family=Manrope:wght@300;400;600;700&display=swap');
         .font-brand { font-family: 'Italiana', serif; }
         body { font-family: 'Manrope', sans-serif; }
-        .cursor-none { cursor: none; }
       `}</style>
 
-      <LuxuryCursor />
+
       <AromaticParticles />
       <ScrollToTopButton />
       <StatusBar />
