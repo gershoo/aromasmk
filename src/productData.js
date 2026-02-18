@@ -350,7 +350,6 @@ export const INITIAL_PRODUCTS = [
         family: "Fougère Oscuro",
         occasion: "Noche Elegante",
         duration: "10h+",
-        isImportant: true,
         tagline: "Misterioso y profundo. La máxima concentración de elegancia."
     },
     {
