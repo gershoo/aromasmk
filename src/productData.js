@@ -260,6 +260,84 @@ export const INITIAL_PRODUCTS = [
         tagline: "Un bouquet floral que desafía al frío."
     },
     {
+        id: "f_11",
+        name: "Wildest Elixir",
+        category: "perfume",
+        gender: "masculino",
+        price: 65000,
+        image: "https://i.ibb.co/fVxfJN3V/Chat-GPT-Image-27-dic-2025-20-15-27.png",
+        notes: { top: "Rosa, Grosella", heart: "Peonía, Jazmín", base: "Vainilla, Cedro" },
+        intensity: 3,
+        family: "Floral Frutal",
+        occasion: "Tarde",
+        tagline: "Un bouquet floral que desafía al frío."
+    },
+    {
+        id: "f_12",
+        name: "Erba Pura",
+        category: "perfume",
+        gender: "masculino",
+        price: 65000,
+        image: "https://i.ibb.co/q3f15tTH/ERBA-PURA-3-D.png",
+        notes: { top: "Rosa, Grosella", heart: "Peonía, Jazmín", base: "Vainilla, Cedro" },
+        intensity: 3,
+        family: "Floral Frutal",
+        occasion: "Tarde",
+        tagline: "Un bouquet floral que desafía al frío."
+    },
+    {
+        id: "f_13",
+        name: "Turin 21",
+        category: "perfume",
+        gender: "masculino",
+        price: 65000,
+        image: "https://i.ibb.co/7JZsZVC4/TURIN-21-3-D.png",
+        notes: { top: "Rosa, Grosella", heart: "Peonía, Jazmín", base: "Vainilla, Cedro" },
+        intensity: 3,
+        family: "Floral Frutal",
+        occasion: "Tarde",
+        tagline: "Un bouquet floral que desafía al frío."
+    },
+    {
+        id: "f_14",
+        name: "Wildest",
+        category: "perfume",
+        gender: "masculino",
+        price: 65000,
+        image: "https://i.ibb.co/vCrzcHFL/Chat-GPT-Image-28-dic-2025-03-51-00.png",
+        notes: { top: "Rosa, Grosella", heart: "Peonía, Jazmín", base: "Vainilla, Cedro" },
+        intensity: 3,
+        family: "Floral Frutal",
+        occasion: "Tarde",
+        tagline: "Un bouquet floral que desafía al frío."
+    },
+    {
+        id: "f_15",
+        name: "Adventure",
+        category: "perfume",
+        gender: "masculino",
+        price: 65000,
+        image: "https://i.ibb.co/5ggCk2RQ/Chat-GPT-Image-27-dic-2025-20-10-37.png",
+        notes: { top: "Rosa, Grosella", heart: "Peonía, Jazmín", base: "Vainilla, Cedro" },
+        intensity: 3,
+        family: "Floral Frutal",
+        occasion: "Tarde",
+        tagline: "Un bouquet floral que desafía al frío."
+    },
+    {
+        id: "f_16",
+        name: "Optimus Silver",
+        category: "perfume",
+        gender: "masculino",
+        price: 65000,
+        image: "https://i.ibb.co/7NpYZZdM/Chat-GPT-Image-17-dic-2025-10-04-39-p-m.png",
+        notes: { top: "Rosa, Grosella", heart: "Peonía, Jazmín", base: "Vainilla, Cedro" },
+        intensity: 3,
+        family: "Floral Frutal",
+        occasion: "Tarde",
+        tagline: "Un bouquet floral que desafía al frío."
+    },
+    {
         id: "f_20",
         name: "GH Classic",
         category: "perfume",
@@ -490,19 +568,6 @@ export const INITIAL_PRODUCTS = [
 
     // ─── VELAS & HOME ───
     {
-        id: "v_1",
-        name: "Mist Patagónico",
-        category: "home-deco",
-        price: 32000,
-        image: "https://i.ibb.co/Q72nMGB0/Chat-GPT-Image-15-ene-2026-08-43-38-a-m.png",
-        notes: { top: "Pino", heart: "Eucalipto", base: "Madera" },
-        intensity: 3,
-        family: "Verde",
-        occasion: "Hogar",
-        duration: "40h",
-        tagline: "El respiro fresco del bosque austral en tu hogar."
-    },
-    {
         id: "h_1",
         name: "Pimienta Home",
         category: "home-deco",
@@ -542,19 +607,6 @@ export const INITIAL_PRODUCTS = [
         tagline: "La delicadeza de un jardín secreto en plena floración."
     },
     {
-        id: "v_4",
-        name: "Ebony Woods",
-        category: "vela",
-        price: 34000,
-        image: "https://i.ibb.co/CsSWZrrY/Chat-GPT-Image-15-ene-2026-07-11-24-a-m.png",
-        notes: { top: "Sándalo", heart: "Cedro del Atlas", base: "Cuero" },
-        intensity: 5,
-        family: "Amaderado",
-        occasion: "Invierno",
-        duration: "12h+",
-        tagline: "Elegancia masculina y calidez de chimenea para tu hogar."
-    },
-    {
         id: "v_5",
         name: "Citrus Verbena",
         category: "vela",
@@ -566,19 +618,6 @@ export const INITIAL_PRODUCTS = [
         occasion: "Día",
         duration: "8h",
         tagline: "Energía vibrante que ilumina y purifica el ambiente."
-    },
-    {
-        id: "v_6",
-        name: "Bosque Profundo",
-        category: "vela",
-        price: 32000,
-        image: "https://i.ibb.co/m5QvV8Jk/Chat-GPT-Image-15-ene-2026-08-43-38-a-m.png",
-        notes: { top: "Pino Siberiano", heart: "Musgo de Roble", base: "Tierra Húmeda" },
-        intensity: 4,
-        family: "Verde",
-        occasion: "Hogar",
-        duration: "40h",
-        tagline: "La serenidad inmensa de un bosque antiguo tras la lluvia."
     },
     {
         id: "v_7",
@@ -594,6 +633,19 @@ export const INITIAL_PRODUCTS = [
         tagline: "Misterio y sensualidad para veladas inolvidables."
     },
     {
+        id: "v_1",
+        name: "Mist Patagónico",
+        category: "home-deco",
+        price: 32000,
+        image: "https://i.ibb.co/Q72nMGB0/Chat-GPT-Image-15-ene-2026-08-43-38-a-m.png",
+        notes: { top: "Pino", heart: "Eucalipto", base: "Madera" },
+        intensity: 3,
+        family: "Verde",
+        occasion: "Hogar",
+        duration: "40h",
+        tagline: "El respiro fresco del bosque austral en tu hogar."
+    },
+    {
         id: "v_8",
         name: "Cotton Cloud",
         category: "vela",
@@ -604,18 +656,6 @@ export const INITIAL_PRODUCTS = [
         family: "Fresco",
         occasion: "Mañana",
         tagline: "La pureza y suavidad de sábanas blancas recién lavadas."
-    },
-    {
-        id: "v_9",
-        name: "Rosa Damascena",
-        category: "vela",
-        price: 32000,
-        image: "https://i.ibb.co/fYrzwjxs/Chat-GPT-Image-15-ene-2026-07-35-50-a-m.png",
-        notes: { top: "Pétalos de Rosa", heart: "Geranio", base: "Miel" },
-        intensity: 4,
-        family: "Floral",
-        occasion: "Romántico",
-        tagline: "Un tributo a la reina de las flores, clásico y eterno."
     },
     {
         id: "v_10",
@@ -655,17 +695,4 @@ export const INITIAL_PRODUCTS = [
         duration: "10h+",
         tagline: "Un cóctel refrescante en una playa paradisíaca."
     },
-    {
-        id: "v_13",
-        name: "Coconut Beach",
-        category: "vela",
-        price: 32000,
-        image: "https://i.ibb.co/TDfsLK6w/Chat-GPT-Image-15-ene-2026-07-35-48-a-m.png", // Reutiliza imagen tropical
-        notes: { top: "Agua de Coco", heart: "Flor de Tiaré", base: "Vainilla" },
-        intensity: 3,
-        family: "Gourmand Tropical",
-        occasion: "Verano",
-        duration: "6h",
-        tagline: "La cremosidad exótica del coco bajo el sol."
-    }
 ];
