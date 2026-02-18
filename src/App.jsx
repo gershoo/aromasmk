@@ -689,7 +689,7 @@ const CatalogProvider = ({ children, products }) => {
         res = res.filter(p => p.gender === subSection);
       }
     } else if (section === 'velas') {
-      si
+
       res = res.filter(p => p.category === 'vela' && !p.id.startsWith('f_') && !p.id.startsWith('m_'));
     } else {
       res = res.filter(p => p.category === section);
