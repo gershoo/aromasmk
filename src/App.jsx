@@ -1291,7 +1291,7 @@ function AtelierApp() {
       {/* CATALOG */}
       <section id="catalogo" className="py-32 px-6 bg-[#FDFCF8] relative z-10">
         <div className="container mx-auto max-w-7xl">
-          <SectionTitle title="El Catálogo" subtitle="Colección Patagónica" />
+          <SectionTitle title="El Catálogo" subtitle="NUESTROS AROMAS" />
 
           <div className="flex justify-center gap-6 mb-16 flex-wrap">
             {[
