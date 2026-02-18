@@ -5,7 +5,6 @@ import {
     Menu,
     X,
     ChevronRight,
-    Star,
     Instagram,
     Facebook,
     Mail,
@@ -120,247 +119,10 @@ const AnimatedCounter = ({ end, suffix = '' }) => {
     return <span ref={ref} className="tabular-nums">{count.toLocaleString()}{suffix}</span>;
 };
 
-// ═══ FORMULARIO QUIZ MODAL ═══
-const QuickConsultForm = ({ isOpen, onClose }) => {
-    const [step, setStep] = useState(0);
-    const [answers, setAnswers] = useState({});
-    const [isSubmitting, setIsSubmitting] = useState(false);
-    const [isComplete, setIsComplete] = useState(false);
 
-    const questions = [
-        {
-            id: 'gender',
-            question: "¿Para quién es la fragancia?",
-            options: [
-                { value: 'mujer', label: 'Para Ella', icon: '♀', color: 'from-rose-500/20 to-pink-500/20 border-rose-500/30' },
-                { value: 'hombre', label: 'Para Él', icon: '♂', color: 'from-blue-500/20 to-indigo-500/20 border-blue-500/30' },
-                { value: 'unisex', label: 'Unisex', icon: '⚤', color: 'from-purple-500/20 to-violet-500/20 border-purple-500/30' },
-            ]
-        },
-        {
-            id: 'occasion',
-            question: "¿Para qué ocasión?",
-            options: [
-                { value: 'dia', label: 'Día a Día', icon: '☀️', color: 'from-amber-500/20 to-yellow-500/20 border-amber-500/30' },
-                { value: 'noche', label: 'Noche Especial', icon: '🌙', color: 'from-indigo-500/20 to-blue-500/20 border-indigo-500/30' },
-                { value: 'oficina', label: 'Oficina', icon: '💼', color: 'from-stone-500/20 to-gray-500/20 border-stone-500/30' },
-                { value: 'regalo', label: 'Para Regalar', icon: '🎁', color: 'from-red-500/20 to-rose-500/20 border-red-500/30' },
-            ]
-        },
-        {
-            id: 'family',
-            question: "¿Qué notas te atraen más?",
-            options: [
-                { value: 'floral', label: 'Florales', icon: '🌸', color: 'from-pink-500/20 to-rose-500/20 border-pink-500/30' },
-                { value: 'amaderado', label: 'Amaderados', icon: '🌲', color: 'from-green-700/20 to-emerald-700/20 border-green-700/30' },
-                { value: 'citrico', label: 'Cítricos', icon: '🍋', color: 'from-yellow-500/20 to-orange-500/20 border-yellow-500/30' },
-                { value: 'oriental', label: 'Orientales', icon: '✨', color: 'from-[#C5A059]/20 to-amber-600/20 border-[#C5A059]/30' },
-                { value: 'fresco', label: 'Frescos', icon: '💧', color: 'from-cyan-500/20 to-sky-500/20 border-cyan-500/30' },
-            ]
-        },
-        {
-            id: 'intensity',
-            question: "¿Qué intensidad preferís?",
-            options: [
-                { value: 'suave', label: 'Sutil y Cercana', icon: '🕊️', color: 'from-stone-400/20 to-gray-400/20 border-stone-400/30' },
-                { value: 'moderada', label: 'Equilibrada', icon: '⚖️', color: 'from-blue-400/20 to-indigo-400/20 border-blue-400/30' },
-                { value: 'intensa', label: 'Potente y Duradera', icon: '🔥', color: 'from-orange-500/20 to-red-500/20 border-orange-500/30' },
-            ]
-        }
-    ];
-
-    const currentQuestion = questions[step];
-    const progress = ((step + 1) / questions.length) * 100;
-
-    const handleSelect = (value) => {
-        setAnswers(prev => ({ ...prev, [currentQuestion.id]: value }));
-        if (step < questions.length - 1) {
-            setTimeout(() => setStep(step + 1), 300);
-        }
-    };
-
-    const handleSubmit = async () => {
-        setIsSubmitting(true);
-        // Simular proceso
-        await new Promise(resolve => setTimeout(resolve, 1500));
-
-        // Construir mensaje de WhatsApp
-        const message = `Hola! Busco asesoramiento personalizado:
-• Para: ${answers.gender}
-• Ocasión: ${answers.occasion}
-• Notas preferidas: ${answers.family}
-• Intensidad: ${answers.intensity}`;
-
-        window.open(`https://wa.me/5492920674938?text=${encodeURIComponent(message)}`, '_blank');
-        setIsSubmitting(false);
-        setIsComplete(true);
-    };
-
-    const isLastStep = step === questions.length - 1 && answers[currentQuestion?.id];
-
-    if (!isOpen) return null;
-
-    return (
-        <AnimatePresence>
-            <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                className="fixed inset-0 z-[2000] bg-stone-950/90 backdrop-blur-xl flex items-center justify-center p-4"
-                onClick={onClose}
-            >
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.9, y: 30 }}
-                    animate={{ opacity: 1, scale: 1, y: 0 }}
-                    exit={{ opacity: 0, scale: 0.9, y: 30 }}
-                    transition={{ type: "spring", damping: 25, stiffness: 300 }}
-                    className="bg-[#1a1815] w-full max-w-lg rounded-[32px] overflow-hidden border border-[#C5A059]/20 shadow-2xl shadow-[#C5A059]/10 relative"
-                    onClick={e => e.stopPropagation()}
-                >
-                    {isComplete ? (
-                        <div className="p-10 text-center">
-                            <motion.div
-                                initial={{ scale: 0 }}
-                                animate={{ scale: 1 }}
-                                transition={{ type: "spring", damping: 15 }}
-                                className="w-20 h-20 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg shadow-emerald-500/30"
-                            >
-                                <Check size={36} className="text-white" />
-                            </motion.div>
-                            <h3 className="font-brand text-3xl text-white mb-3">¡Perfecto!</h3>
-                            <p className="text-stone-400 mb-6">Te redirigimos a WhatsApp para completar tu consulta.</p>
-                            <button
-                                onClick={onClose}
-                                className="text-[#C5A059] text-sm font-bold hover:underline"
-                            >
-                                Cerrar
-                            </button>
-                        </div>
-                    ) : (
-                        <>
-                            {/* Header con progreso */}
-                            <div className="px-8 pt-8 pb-4">
-                                <div className="flex items-center justify-between mb-6">
-                                    <div>
-                                        <span className="text-[#C5A059] text-[9px] font-bold uppercase tracking-[0.3em]">
-                                            Paso {step + 1} de {questions.length}
-                                        </span>
-                                        <h3 className="font-brand text-xl text-white mt-1">Asesoría Personalizada</h3>
-                                    </div>
-                                    <button
-                                        onClick={onClose}
-                                        className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-stone-500 hover:bg-white/10 hover:text-white transition-all"
-                                    >
-                                        <X size={16} />
-                                    </button>
-                                </div>
-
-                                <div className="h-1 bg-white/5 rounded-full overflow-hidden">
-                                    <motion.div
-                                        className="h-full bg-gradient-to-r from-[#C5A059] to-amber-400 rounded-full"
-                                        initial={{ width: 0 }}
-                                        animate={{ width: `${progress}%` }}
-                                        transition={{ duration: 0.5, ease: "easeOut" }}
-                                    />
-                                </div>
-                            </div>
-
-                            {/* Pregunta actual */}
-                            <div className="px-8 py-6">
-                                <AnimatePresence mode="wait">
-                                    <motion.div
-                                        key={step}
-                                        initial={{ opacity: 0, x: 30 }}
-                                        animate={{ opacity: 1, x: 0 }}
-                                        exit={{ opacity: 0, x: -30 }}
-                                        transition={{ duration: 0.3 }}
-                                    >
-                                        <h4 className="text-white text-lg font-bold mb-5">{currentQuestion.question}</h4>
-
-                                        <div className={`grid gap-3 ${currentQuestion.options.length <= 3 ? 'grid-cols-1' : 'grid-cols-2'}`}>
-                                            {currentQuestion.options.map((option, i) => {
-                                                const isSelected = answers[currentQuestion.id] === option.value;
-                                                return (
-                                                    <motion.button
-                                                        key={option.value}
-                                                        initial={{ opacity: 0, y: 10 }}
-                                                        animate={{ opacity: 1, y: 0 }}
-                                                        transition={{ delay: i * 0.06 }}
-                                                        onClick={() => handleSelect(option.value)}
-                                                        className={`relative p-4 rounded-2xl border text-left transition-all duration-300 group ${isSelected
-                                                                ? `bg-gradient-to-br ${option.color} border-[#C5A059]/50 shadow-lg shadow-[#C5A059]/10`
-                                                                : 'bg-white/[0.03] border-white/10 hover:bg-white/[0.06] hover:border-white/20'
-                                                            }`}
-                                                    >
-                                                        <div className="flex items-center gap-3">
-                                                            <span className="text-xl">{option.icon}</span>
-                                                            <span className={`text-sm font-bold transition-colors ${isSelected ? 'text-white' : 'text-stone-300 group-hover:text-white'
-                                                                }`}>
-                                                                {option.label}
-                                                            </span>
-                                                        </div>
-
-                                                        {isSelected && (
-                                                            <motion.div
-                                                                initial={{ scale: 0 }}
-                                                                animate={{ scale: 1 }}
-                                                                className="absolute top-3 right-3 w-5 h-5 bg-[#C5A059] rounded-full flex items-center justify-center"
-                                                            >
-                                                                <Check size={10} className="text-white" />
-                                                            </motion.div>
-                                                        )}
-                                                    </motion.button>
-                                                )
-                                            })}
-                                        </div>
-                                    </motion.div>
-                                </AnimatePresence>
-                            </div>
-
-                            {/* Navegación */}
-                            <div className="px-8 pb-8 flex items-center justify-between">
-                                <button
-                                    onClick={() => step > 0 && setStep(step - 1)}
-                                    className={`text-xs font-bold uppercase tracking-wider transition-colors ${step > 0 ? 'text-stone-400 hover:text-white' : 'text-transparent pointer-events-none'
-                                        }`}
-                                >
-                                    ← Anterior
-                                </button>
-
-                                {isLastStep && (
-                                    <motion.button
-                                        initial={{ opacity: 0, scale: 0.9 }}
-                                        animate={{ opacity: 1, scale: 1 }}
-                                        onClick={handleSubmit}
-                                        disabled={isSubmitting}
-                                        className="px-8 py-3 bg-gradient-to-r from-[#C5A059] to-amber-500 text-stone-900 rounded-full font-bold text-sm uppercase tracking-wider shadow-lg shadow-[#C5A059]/30 hover:shadow-xl hover:shadow-[#C5A059]/40 transition-all flex items-center gap-2 disabled:opacity-50"
-                                    >
-                                        {isSubmitting ? (
-                                            <motion.div
-                                                animate={{ rotate: 360 }}
-                                                transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                                                className="w-4 h-4 border-2 border-stone-900 border-t-transparent rounded-full"
-                                            />
-                                        ) : (
-                                            <>
-                                                <MessageCircle size={16} />
-                                                Consultar por WhatsApp
-                                            </>
-                                        )}
-                                    </motion.button>
-                                )}
-                            </div>
-                        </>
-                    )}
-                </motion.div>
-            </motion.div>
-        </AnimatePresence>
-    );
-};
 
 // ═══ SECCIÓN PRINCIPAL SCENT SANCTUARY ═══
 const ConsultationSection = () => {
-    const [showForm, setShowForm] = useState(false);
     const [hoveredCard, setHoveredCard] = useState(null);
 
     const contactMethods = [
@@ -369,27 +131,27 @@ const ConsultationSection = () => {
             icon: MessageCircle,
             title: "WhatsApp",
             subtitle: "Respuesta inmediata",
-            description: "Chateá directamente con nuestro equipo de asesores expertos en fragancias.",
+            description: "Chateá directamente con nuestro equipo de asesores expertos para una atención VIP.",
             action: () => window.open('https://wa.me/5492920674938?text=Hola! Quiero asesoramiento sobre perfumes', '_blank'),
             badge: "Online ahora",
             badgeColor: "bg-emerald-500"
         },
         {
-            id: 'asesoria',
-            icon: Sparkles,
-            title: "Asesoría Guiada",
-            subtitle: "Experiencia personalizada",
-            description: "Respondé 4 preguntas y encontrá tu fragancia ideal con inteligencia aromática.",
-            action: () => setShowForm(true),
-            badge: "2 min",
-            badgeColor: "bg-[#C5A059]"
+            id: 'facebook',
+            icon: Facebook,
+            title: "Facebook",
+            subtitle: "Comunidad Oficial",
+            description: "Sumate a nuestro espacio exclusivo. Reseñas detalladas, eventos y conexión con otros amantes de los aromas.",
+            action: () => window.open('https://www.facebook.com/profile.php?id=61580521685802', '_blank'),
+            badge: "Me Gusta",
+            badgeColor: "bg-[#1877F2]"
         },
         {
             id: 'instagram',
             icon: Instagram,
             title: "Instagram",
-            subtitle: "Novedades y drops",
-            description: "Seguinos para enterarte de lanzamientos exclusivos y ediciones limitadas.",
+            subtitle: "Visuals & Drops",
+            description: "Inspiración diaria. Seguinos para enterarte antes que nadie de los lanzamientos limitados.",
             action: () => window.open('https://instagram.com/mkaromas', '_blank'),
             badge: "Seguir",
             badgeColor: "bg-gradient-to-r from-purple-500 to-pink-500"
@@ -657,8 +419,8 @@ const ConsultationSection = () => {
                                         key={index}
                                         onClick={() => setActiveTestimonial(index)}
                                         className={`transition-all duration-300 rounded-full ${activeTestimonial === index
-                                                ? 'w-6 h-2 bg-[#C5A059]'
-                                                : 'w-2 h-2 bg-white/20 hover:bg-white/40'
+                                            ? 'w-6 h-2 bg-[#C5A059]'
+                                            : 'w-2 h-2 bg-white/20 hover:bg-white/40'
                                             }`}
                                     />
                                 ))}
@@ -703,8 +465,7 @@ const ConsultationSection = () => {
                 </div>
             </section>
 
-            {/* Modal del Quiz */}
-            <QuickConsultForm isOpen={showForm} onClose={() => setShowForm(false)} />
+
 
             {/* CSS para gradiente animado */}
             <style>{`
