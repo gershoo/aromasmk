@@ -153,14 +153,14 @@ const ConsultationSection = () => {
             title: "Instagram",
             subtitle: "Inspiración",
             description: "Fotos reales de los productos, stories diarias y lanzamientos exclusivos.",
-            action: () => window.open('https://instagram.com/mkaromas', '_blank'),
+            action: () => window.open('https://www.instagram.com/aromasmk_/', '_blank'),
             badge: "Seguinos",
             badgeColor: "bg-gradient-to-r from-purple-500 to-pink-500"
         }
     ];
 
     const stats = [
-        { value: 2500, suffix: '+', label: 'Clientes felices', icon: Users },
+        { value: 500, suffix: '+', label: 'Clientes felices', icon: Users },
         { value: 98, suffix: '%', label: 'Satisfacción', icon: Star },
         { value: 10, suffix: 'min', label: 'Tiempo de respuesta', icon: Clock },
         { value: 50, suffix: '+', label: 'Fragancias', icon: Award },
@@ -232,7 +232,7 @@ const ConsultationSection = () => {
                             transition={{ delay: 0.2 }}
                             className="block text-[#C5A059] text-[10px] font-bold uppercase tracking-[0.5em] mb-6"
                         >
-                            Santuario del Aroma
+                            CANALES DE CONTACTO
                         </motion.span>
 
                         <motion.h2
@@ -255,7 +255,7 @@ const ConsultationSection = () => {
                             transition={{ duration: 0.6, delay: 0.5 }}
                             className="text-stone-400 text-lg md:text-xl font-light max-w-2xl mx-auto leading-relaxed"
                         >
-                            Estamos acá para asesorarte. Elegí tu canal favorito y sumate al mundo <span className="text-[#C5A059]">MK Aromas</span>.
+                            Estamos acá para asesorarte. Elegí tu canal favorito y sumate al mundo <br /> <span className="text-[#C5A059]">MK Aromas</span>.
                         </motion.p>
                     </div>
 
