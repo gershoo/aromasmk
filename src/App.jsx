@@ -683,7 +683,11 @@ const CatalogProvider = ({ children, products }) => {
     let res = products;
     if (section === 'perfumes') {
       res = res.filter(p => p.category === 'perfume');
-      if (subSection !== 'all') res = res.filter(p => p.gender === subSection);
+      if (subSection === 'all') {
+        res = res.filter(p => p.isImportant);
+      } else {
+        res = res.filter(p => p.gender === subSection);
+      }
     } else if (section === 'velas') {
       si
       res = res.filter(p => p.category === 'vela' && !p.id.startsWith('f_') && !p.id.startsWith('m_'));
@@ -1192,7 +1196,7 @@ function AtelierApp() {
       <ScrollToTopButton />
       <StatusBar />
       <ChatWidget products={INITIAL_PRODUCTS} />
-      <ExitIntentPopup />
+
 
       {/* TOAST */}
       <AnimatePresence>
@@ -1258,7 +1262,7 @@ function AtelierApp() {
       </header>
 
       {/* HERO */}
-      <UrgencyBanner />
+
       <section className="h-screen relative flex items-center justify-center bg-stone-900 overflow-hidden text-white">
         <ParallaxBackground />
         <OptimizedImage

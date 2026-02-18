@@ -17,6 +17,7 @@ export const INITIAL_PRODUCTS = [
         occasion: "Día/Noche",
         duration: "12h",
         isNew: true,
+        isImportant: true,
         tagline: "Un amanecer siciliano, radiante y eterno."
     },
     {
@@ -46,6 +47,7 @@ export const INITIAL_PRODUCTS = [
         occasion: "Noche",
         duration: "10h+",
         isBestseller: true,
+        isImportant: true,
         tagline: "El misterio seductor de una noche estrellada."
     },
     {
@@ -130,6 +132,7 @@ export const INITIAL_PRODUCTS = [
         family: "Oriental Gourmand",
         occasion: "Noche",
         duration: "10h+",
+        isImportant: true,
         tagline: "Un diamante negro de pasión y misterio."
     },
     {
@@ -158,6 +161,7 @@ export const INITIAL_PRODUCTS = [
         family: "Oriental Amaderado",
         occasion: "Invierno",
         duration: "12h+",
+        isImportant: true,
         tagline: "Un elixir dorado de calidez y lujo."
     },
     {
@@ -323,6 +327,7 @@ export const INITIAL_PRODUCTS = [
         family: "Amaderado",
         occasion: "Noche",
         duration: "10h+",
+        isImportant: true,
         tagline: "Poder y magnetismo en estado puro."
     },
     {
@@ -365,6 +370,7 @@ export const INITIAL_PRODUCTS = [
         family: "Especiado",
         occasion: "Invierno",
         duration: "12h+",
+        isImportant: true,
         tagline: "Un legado de reyes, cálido y profundo."
     },
     {
@@ -407,6 +413,7 @@ export const INITIAL_PRODUCTS = [
         family: "Oriental",
         occasion: "Noche",
         duration: "10h+",
+        isImportant: true,
         tagline: "El resplandor dorado del ámbar puro."
     },
     {
@@ -434,6 +441,7 @@ export const INITIAL_PRODUCTS = [
         family: "Cuero",
         occasion: "Noche",
         duration: "10h+",
+        isImportant: true,
         tagline: "Cuero toscano, suave y salvaje."
     },
     {
