@@ -5,6 +5,7 @@ import {
     Menu,
     X,
     ChevronRight,
+    Star,
     Instagram,
     Facebook,
     Mail,
