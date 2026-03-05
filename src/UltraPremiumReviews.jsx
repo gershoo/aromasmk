@@ -504,16 +504,6 @@ const ReviewCard = ({ review, index, onVote }) => {
                 <div className="p-6">
                     {/* Header */}
                     <div className="flex items-start gap-4 mb-4">
-                        <div className="relative flex-shrink-0">
-                            <div className="w-14 h-14 rounded-2xl overflow-hidden ring-2 ring-[#C5A059]/20 ring-offset-2 ring-offset-white">
-                                <img src={review.user.avatar} alt={review.user.name} className="w-full h-full object-cover" />
-                            </div>
-                            {review.user.verified && (
-                                <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-emerald-500 rounded-full flex items-center justify-center">
-                                    <Check size={10} className="text-white" strokeWidth={3} />
-                                </div>
-                            )}
-                        </div>
                         <div className="flex-1 min-w-0">
                             <div className="flex items-center gap-2 flex-wrap">
                                 <h4 className="font-bold text-stone-900">{review.user.name}</h4>
