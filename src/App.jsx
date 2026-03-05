@@ -1460,12 +1460,8 @@ export default function App() {
   );
 
   return (
-    <ErrorBoundaryRoot>
-      <AnalyticsProvider>
-        <CatalogProvider products={INITIAL_PRODUCTS}>
-          <AtelierApp />
-        </CatalogProvider>
-      </AnalyticsProvider>
-    </ErrorBoundaryRoot>
+    <CatalogProvider products={INITIAL_PRODUCTS}>
+      <AtelierApp />
+    </CatalogProvider>
   );
 }
