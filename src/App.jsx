@@ -24,6 +24,15 @@ import ReviewsSection from './UltraPremiumReviews';
 import ProductCard from './components/ProductCard';
 import ConsultationSection from './components/ConsultationSection';
 
+// --- CORRECCIONES PARA EVITAR PANTALLA BLANCA ---
+// Estas funciones simulan los componentes faltantes para que React no colapse.
+const useAnalytics = () => ({
+  trackAddToCart: () => { },
+  trackProductView: () => { }
+});
+const AromaticParticles = () => null;
+const ParallaxBackground = () => null;
+
 // --- FIREBASE ---
 const firebaseConfig = {
   apiKey: "AIzaSyCWT-mFXHXR0DsnnsBQpI7tzdjrgN--NDg",
