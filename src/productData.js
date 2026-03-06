@@ -411,19 +411,6 @@ export const INITIAL_PRODUCTS = [
 
     // ─── VELAS & HOME (Creaciones propias - Descripciones de ambiente) ───
     {
-        id: "hd_1",
-        name: "Pimienta Home",
-        category: "home-deco",
-        price: 42000,
-        image: "https://i.ibb.co/twC78DrK/Chat-GPT-Image-2-feb-2026-12-43-38.png",
-        notes: { top: "Pimienta Rosa", heart: "Madera de Guayaco", base: "Vainilla Ahumada" },
-        intensity: 4,
-        family: "Especiado",
-        occasion: "Hogar",
-        duration: "40h",
-        tagline: "Personalidad para tus espacios. Un aroma vibrante y sofisticado."
-    },
-    {
         id: "v_2",
         name: "Golden Vanilla",
         category: "vela",
@@ -479,23 +466,6 @@ export const INITIAL_PRODUCTS = [
         occasion: "Noche / Living elegante",
         duration: "6-8h",
         tagline: "Calidez sofisticada. Un aroma profundo que envuelve el ambiente con elegancia oriental."
-    },
-    {
-        id: "h_2",
-        name: "Nag Champa",
-        category: "home-deco",
-        price: 34000,
-        image: "https://i.ibb.co/0y3SD48V/Chat-GPT-Image-6-mar-2026-03-58-31-a-m.png",
-        notes: {
-            top: "Flores Blancas",
-            heart: "Champaca, Incienso",
-            base: "Sándalo, Resinas"
-        },
-        intensity: 5,
-        family: "Oriental Espiritual",
-        occasion: "Meditación / Relax",
-        duration: "6-8h",
-        tagline: "El aroma de los templos orientales. Profundo, espiritual y absolutamente envolvente."
     },
     {
         id: "h_3",
