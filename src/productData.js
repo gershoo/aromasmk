@@ -411,7 +411,7 @@ export const INITIAL_PRODUCTS = [
 
     // ─── VELAS & HOME (Creaciones propias - Descripciones de ambiente) ───
     {
-        id: "h_1",
+        id: "hd_1",
         name: "Pimienta Home",
         category: "home-deco",
         price: 42000,
@@ -462,4 +462,209 @@ export const INITIAL_PRODUCTS = [
         duration: "40h",
         tagline: "Elegancia nocturna. Notas profundas para momentos de introspección."
     },
+    // ─── HOME & DIFUSORES ───
+    {
+        id: "h_1",
+        name: "Cheer",
+        category: "home",
+        price: 34000,
+        image: "https://i.ibb.co/cGh8pw8/cheeeer.png",
+        notes: {
+            top: "Bergamota",
+            heart: "Incienso, Ámbar",
+            base: "Sándalo, Pachulí"
+        },
+        intensity: 5,
+        family: "Oriental Amaderada",
+        occasion: "Noche / Living elegante",
+        duration: "6-8h",
+        tagline: "Calidez sofisticada. Un aroma profundo que envuelve el ambiente con elegancia oriental."
+    },
+    {
+        id: "h_2",
+        name: "Nag Champa",
+        category: "home",
+        price: 34000,
+        image: "https://i.ibb.co/0y3SD48V/Chat-GPT-Image-6-mar-2026-03-58-31-a-m.png",
+        notes: {
+            top: "Flores Blancas",
+            heart: "Champaca, Incienso",
+            base: "Sándalo, Resinas"
+        },
+        intensity: 5,
+        family: "Oriental Espiritual",
+        occasion: "Meditación / Relax",
+        duration: "6-8h",
+        tagline: "El aroma de los templos orientales. Profundo, espiritual y absolutamente envolvente."
+    },
+    {
+        id: "h_3",
+        name: "Naranja & Jengibre",
+        category: "home",
+        price: 34000,
+        image: "https://i.ibb.co/nq0SPNTg/naranja-y-jengibre.png",
+        notes: {
+            top: "Naranja Dulce",
+            heart: "Jengibre Fresco",
+            base: "Cedro Suave"
+        },
+        intensity: 4,
+        family: "Cítrica Especiada",
+        occasion: "Cocina / Día",
+        duration: "6-8h",
+        tagline: "Energía natural. Un acorde cítrico vibrante con un toque especiado estimulante."
+    },
+    {
+        id: "h_4",
+        name: "Flores Blancas",
+        category: "home",
+        price: 34000,
+        image: "https://i.ibb.co/np6WfXW/flores-blancas-2.png",
+        notes: {
+            top: "Neroli",
+            heart: "Jazmín, Gardenia",
+            base: "Almizcle Blanco"
+        },
+        intensity: 4,
+        family: "Floral Elegante",
+        occasion: "Living / Dormitorio",
+        duration: "6-8h",
+        tagline: "Un bouquet floral luminoso que llena el hogar de pureza y elegancia."
+    },
+    {
+        id: "h_5",
+        name: "Citric Pump",
+        category: "home",
+        price: 34000,
+        image: "https://i.ibb.co/XZSK5DQN/citric-pump.png",
+        notes: {
+            top: "Pomelo Rosado",
+            heart: "Limón Siciliano",
+            base: "Almizcle Blanco"
+        },
+        intensity: 4,
+        family: "Cítrica Fresca",
+        occasion: "Cocina / Ambientes luminosos",
+        duration: "6-8h",
+        tagline: "Explosión cítrica. Un aroma limpio y vibrante que revitaliza cualquier espacio."
+    },
+    {
+        id: "h_6",
+        name: "Éter",
+        category: "home",
+        price: 34000,
+        image: "https://i.ibb.co/tp3bdC6X/eter-2.png",
+        notes: {
+            top: "Acorde Ozónico",
+            heart: "Lirio Blanco",
+            base: "Almizcle Aireado"
+        },
+        intensity: 3,
+        family: "Acuática Fresca",
+        occasion: "Espacios minimalistas",
+        duration: "6-8h",
+        tagline: "Ligero como el aire. Un aroma limpio que transmite sensación de pureza absoluta."
+    },
+    {
+        id: "h_7",
+        name: "Limón",
+        category: "home",
+        price: 34000,
+        image: "https://i.ibb.co/RkyJCJp7/limon.png",
+        notes: {
+            top: "Limón Siciliano",
+            heart: "Verbena",
+            base: "Almizcle Blanco"
+        },
+        intensity: 4,
+        family: "Cítrica Limpia",
+        occasion: "Cocina / Espacios frescos",
+        duration: "6-8h",
+        tagline: "La frescura del limón recién cortado. Limpio, brillante y energizante."
+    },
+    {
+        id: "h_8",
+        name: "Oud Imperial",
+        category: "home",
+        price: 34000,
+        image: "https://i.ibb.co/RGFmsvJt/oud-imperial.png",
+        notes: {
+            top: "Azafrán",
+            heart: "Oud",
+            base: "Ámbar, Cuero"
+        },
+        intensity: 5,
+        family: "Oriental Amaderada",
+        occasion: "Living premium / Noche",
+        duration: "8h",
+        tagline: "Un aroma poderoso y majestuoso inspirado en la perfumería oriental."
+    },
+    {
+        id: "h_9",
+        name: "Té Verde",
+        category: "home",
+        price: 34000,
+        image: "https://i.ibb.co/KpsbMHJ9/te-verde.png",
+        notes: {
+            top: "Bergamota",
+            heart: "Té Verde",
+            base: "Almizcle Suave"
+        },
+        intensity: 3,
+        family: "Aromática Fresca",
+        occasion: "Oficina / Día",
+        duration: "6-8h",
+        tagline: "Frescura natural. Un aroma herbal limpio que transmite calma y equilibrio."
+    },
+    {
+        id: "h_10",
+        name: "Tease",
+        category: "home",
+        price: 34000,
+        image: "https://i.ibb.co/5XFZkqmT/tease.png",
+        notes: {
+            top: "Frambuesa",
+            heart: "Vainilla",
+            base: "Caramelo, Almizcle"
+        },
+        intensity: 4,
+        family: "Gourmand Dulce",
+        occasion: "Dormitorio / Ambientes cálidos",
+        duration: "6-8h",
+        tagline: "Dulce y envolvente. Un aroma irresistible que crea un ambiente acogedor."
+    },
+    {
+        id: "h_11",
+        name: "Naranja Intenso",
+        category: "home",
+        price: 34000,
+        image: "https://i.ibb.co/d0jxGZGW/naranja-intenso.png",
+        notes: {
+            top: "Naranja Valencia",
+            heart: "Cáscara de Naranja",
+            base: "Maderas Claras"
+        },
+        intensity: 4,
+        family: "Cítrica Energizante",
+        occasion: "Día / Cocina",
+        duration: "6-8h",
+        tagline: "Un estallido de naranja madura que llena el hogar de vitalidad."
+    },
+    {
+        id: "h_12",
+        name: "Baby Dream",
+        category: "home",
+        price: 34000,
+        image: "https://i.ibb.co/KxNzWpHP/baby-dream.png",
+        notes: {
+            top: "Talco Suave",
+            heart: "Flores Blancas",
+            base: "Almizcle Blanco, Vainilla"
+        },
+        intensity: 2,
+        family: "Atalcada Suave",
+        occasion: "Habitación / Relax",
+        duration: "6-8h",
+        tagline: "Suavidad absoluta. Un aroma limpio y delicado que transmite calma y ternura."
+    }
 ];
