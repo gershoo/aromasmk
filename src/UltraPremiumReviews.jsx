@@ -48,8 +48,8 @@ Definitivamente vuelvo a comprar, MK Aromas tiene un cliente fiel.`,
 
 El perfume llegó en tiempo récord, super bien empaquetado. Se nota que cuidan cada detalle: el frasco venía envuelto en burbujas y la caja no tenía ni un raspón.
 
-Luna Aura tiene un aroma espectacular, dulce pero no empalagoso. Mi novio dice que le encanta cuando lo uso.`,
-        product: 'Luna Aura',
+Cribagge 540 tiene un aroma espectacular, dulce pero no empalagoso. Mi novio dice que le encanta cuando lo uso.`,
+        product: 'cribbage 540',
         productImage: 'https://i.ibb.co/cXX7FJmk/Chat-GPT-Image-11-ene-2026-03-11-07-p-m.png',
         images: ['https://images.unsplash.com/photo-1595425970377-c9703cf48b6d?w=400', 'https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?w=400'],
         purchaseVerified: true, brandLiked: true,
@@ -76,12 +76,12 @@ El perfume (Athenea Classique) es hermoso, elegante, perfecto para el trabajo.`,
         user: { name: 'Valentina López', avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop&crop=face', location: 'Mendoza', verified: true },
         rating: 5, date: '2025-01-08',
         title: 'Excelente relación calidad-precio',
-        content: `Compré el Intense Night para regalarle a mi esposo y fue un éxito total.
+        content: `Compré el Yd12 Vip para regalarle a mi esposo y fue un éxito total.
 
 El packaging es de primera, llegó en una caja preciosa que ni tuve que envolver. A él le encantó, dice que es el mejor perfume que tuvo.
 
 La atención al cliente es otro nivel, me ayudaron a elegir la fragancia por mensaje y acertaron perfecto.`,
-        product: 'Intense Night',
+        product: 'Yd12 Vip',
         productImage: 'https://i.ibb.co/G4GhYW2N/Chat-GPT-Image-17-dic-2025-10-52-39-p-m.png',
         images: ['https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=400', 'https://images.unsplash.com/photo-1541643600914-78b084683601?w=400'],
         purchaseVerified: true, brandLiked: true,
