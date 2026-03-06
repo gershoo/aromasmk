@@ -466,7 +466,7 @@ export const INITIAL_PRODUCTS = [
     {
         id: "h_1",
         name: "Cheer",
-        category: "home",
+        category: "home-deco",
         price: 34000,
         image: "https://i.ibb.co/cGh8pw8/cheeeer.png",
         notes: {
@@ -483,7 +483,7 @@ export const INITIAL_PRODUCTS = [
     {
         id: "h_2",
         name: "Nag Champa",
-        category: "home",
+        category: "home-deco",
         price: 34000,
         image: "https://i.ibb.co/0y3SD48V/Chat-GPT-Image-6-mar-2026-03-58-31-a-m.png",
         notes: {
@@ -500,7 +500,7 @@ export const INITIAL_PRODUCTS = [
     {
         id: "h_3",
         name: "Naranja & Jengibre",
-        category: "home",
+        category: "home-deco",
         price: 34000,
         image: "https://i.ibb.co/nq0SPNTg/naranja-y-jengibre.png",
         notes: {
@@ -517,7 +517,7 @@ export const INITIAL_PRODUCTS = [
     {
         id: "h_4",
         name: "Flores Blancas",
-        category: "home",
+        category: "home-deco",
         price: 34000,
         image: "https://i.ibb.co/np6WfXW/flores-blancas-2.png",
         notes: {
@@ -534,7 +534,7 @@ export const INITIAL_PRODUCTS = [
     {
         id: "h_5",
         name: "Citric Pump",
-        category: "home",
+        category: "home-deco",
         price: 34000,
         image: "https://i.ibb.co/XZSK5DQN/citric-pump.png",
         notes: {
@@ -551,7 +551,7 @@ export const INITIAL_PRODUCTS = [
     {
         id: "h_6",
         name: "Éter",
-        category: "home",
+        category: "home-deco",
         price: 34000,
         image: "https://i.ibb.co/tp3bdC6X/eter-2.png",
         notes: {
@@ -568,7 +568,7 @@ export const INITIAL_PRODUCTS = [
     {
         id: "h_7",
         name: "Limón",
-        category: "home",
+        category: "home-deco",
         price: 34000,
         image: "https://i.ibb.co/RkyJCJp7/limon.png",
         notes: {
@@ -585,7 +585,7 @@ export const INITIAL_PRODUCTS = [
     {
         id: "h_8",
         name: "Oud Imperial",
-        category: "home",
+        category: "home-deco",
         price: 34000,
         image: "https://i.ibb.co/RGFmsvJt/oud-imperial.png",
         notes: {
@@ -602,7 +602,7 @@ export const INITIAL_PRODUCTS = [
     {
         id: "h_9",
         name: "Té Verde",
-        category: "home",
+        category: "home-deco",
         price: 34000,
         image: "https://i.ibb.co/KpsbMHJ9/te-verde.png",
         notes: {
@@ -619,7 +619,7 @@ export const INITIAL_PRODUCTS = [
     {
         id: "h_10",
         name: "Tease",
-        category: "home",
+        category: "home-deco",
         price: 34000,
         image: "https://i.ibb.co/5XFZkqmT/tease.png",
         notes: {
@@ -636,7 +636,7 @@ export const INITIAL_PRODUCTS = [
     {
         id: "h_11",
         name: "Naranja Intenso",
-        category: "home",
+        category: "home-deco",
         price: 34000,
         image: "https://i.ibb.co/d0jxGZGW/naranja-intenso.png",
         notes: {
@@ -653,7 +653,7 @@ export const INITIAL_PRODUCTS = [
     {
         id: "h_12",
         name: "Baby Dream",
-        category: "home",
+        category: "home-deco",
         price: 34000,
         image: "https://i.ibb.co/KxNzWpHP/baby-dream.png",
         notes: {
