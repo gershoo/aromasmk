@@ -508,32 +508,7 @@ const QuickViewModal = () => {
             <IntensityMeter value={p.intensity || 4} size="sm" />
           </div>
 
-          {/* Notas Compactas - Todo en una línea por nota */}
-          {p.notes && (
-            <div className="bg-stone-50 rounded-xl p-3 mb-4 space-y-2">
-              <div className="flex items-center gap-2">
-                <div className="w-6 h-6 rounded-md bg-amber-100 flex items-center justify-center flex-shrink-0">
-                  <SparklesIcon size={12} className="text-amber-600" />
-                </div>
-                <span className="text-[9px] font-bold uppercase text-amber-600 w-12">Salida</span>
-                <span className="text-[11px] text-stone-600 truncate">{p.notes.top}</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="w-6 h-6 rounded-md bg-rose-100 flex items-center justify-center flex-shrink-0">
-                  <Heart size={12} className="text-rose-500" />
-                </div>
-                <span className="text-[9px] font-bold uppercase text-rose-500 w-12">Corazón</span>
-                <span className="text-[11px] text-stone-600 truncate">{p.notes.heart}</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="w-6 h-6 rounded-md bg-stone-200 flex items-center justify-center flex-shrink-0">
-                  <Package size={12} className="text-stone-600" />
-                </div>
-                <span className="text-[9px] font-bold uppercase text-stone-500 w-12">Fondo</span>
-                <span className="text-[11px] text-stone-600 truncate">{p.notes.base}</span>
-              </div>
-            </div>
-          )}
+
 
           {/* Detalles compactos */}
           <div className="grid grid-cols-3 gap-2 mb-4 text-center">

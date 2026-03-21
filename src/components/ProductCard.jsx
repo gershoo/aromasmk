@@ -146,8 +146,8 @@ const ProductCard = ({ product, index, onQuickView, onAddToCart, isFavorite, onT
                             onToggleFavorite(p.id);
                         }}
                         className={`absolute top-4 right-4 z-20 w-9 h-9 rounded-full flex items-center justify-center transition-all duration-300 ${isFavorite
-                                ? 'bg-red-50 text-red-500 shadow-lg shadow-red-200/50 scale-110'
-                                : 'bg-white/80 backdrop-blur-sm text-stone-300 opacity-0 group-hover:opacity-100 hover:text-red-400 hover:bg-red-50'
+                            ? 'bg-red-50 text-red-500 shadow-lg shadow-red-200/50 scale-110'
+                            : 'bg-white/80 backdrop-blur-sm text-stone-300 opacity-0 group-hover:opacity-100 hover:text-red-400 hover:bg-red-50'
                             }`}
                     >
                         <Heart
@@ -203,39 +203,7 @@ const ProductCard = ({ product, index, onQuickView, onAddToCart, isFavorite, onT
                                 </div>
                             </div>
 
-                            {/* ── NOTAS OLFATIVAS ── */}
-                            {p.notes && (
-                                <div
-                                    className="grid grid-cols-3 gap-1.5 transition-all duration-500"
-                                    style={{
-                                        opacity: showInfo ? 1 : 0,
-                                        transform: showInfo ? 'translateY(0)' : 'translateY(12px)',
-                                        transitionDelay: '0.05s',
-                                    }}
-                                >
-                                    <div className="bg-white/10 backdrop-blur-md rounded-lg p-2 border border-white/10 hover:bg-white/15 transition-colors">
-                                        <div className="flex items-center gap-1 mb-1">
-                                            <SparklesIcon size={8} className="text-amber-400" />
-                                            <span className="text-[7px] font-bold text-amber-400 uppercase tracking-wider">Salida</span>
-                                        </div>
-                                        <p className="text-[8px] text-white/80 leading-tight line-clamp-2">{p.notes.top}</p>
-                                    </div>
-                                    <div className="bg-white/10 backdrop-blur-md rounded-lg p-2 border border-white/10 hover:bg-white/15 transition-colors">
-                                        <div className="flex items-center gap-1 mb-1">
-                                            <Heart size={8} className="text-rose-400" />
-                                            <span className="text-[7px] font-bold text-rose-400 uppercase tracking-wider">Corazón</span>
-                                        </div>
-                                        <p className="text-[8px] text-white/80 leading-tight line-clamp-2">{p.notes.heart}</p>
-                                    </div>
-                                    <div className="bg-white/10 backdrop-blur-md rounded-lg p-2 border border-white/10 hover:bg-white/15 transition-colors">
-                                        <div className="flex items-center gap-1 mb-1">
-                                            <Package size={8} className="text-stone-300" />
-                                            <span className="text-[7px] font-bold text-stone-300 uppercase tracking-wider">Fondo</span>
-                                        </div>
-                                        <p className="text-[8px] text-white/80 leading-tight line-clamp-2">{p.notes.base}</p>
-                                    </div>
-                                </div>
-                            )}
+
 
                             {/* ── DETALLES RÁPIDOS ── */}
                             <div
@@ -282,8 +250,8 @@ const ProductCard = ({ product, index, onQuickView, onAddToCart, isFavorite, onT
                                                 <div
                                                     key={i}
                                                     className={`flex-1 h-1 rounded-full transition-all duration-500 ${i < p.intensity
-                                                            ? 'bg-gradient-to-r from-[#C5A059] to-amber-400 shadow-sm shadow-[#C5A059]/30'
-                                                            : 'bg-white/15'
+                                                        ? 'bg-gradient-to-r from-[#C5A059] to-amber-400 shadow-sm shadow-[#C5A059]/30'
+                                                        : 'bg-white/15'
                                                         }`}
                                                     style={{ transitionDelay: `${i * 0.05}s` }}
                                                 />
@@ -310,8 +278,8 @@ const ProductCard = ({ product, index, onQuickView, onAddToCart, isFavorite, onT
                                         setAddedToCart(true);
                                     }}
                                     className={`flex-1 py-2.5 rounded-xl font-bold text-[10px] uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-2 ${addedToCart
-                                            ? 'bg-emerald-500 text-white shadow-lg shadow-emerald-500/30'
-                                            : 'bg-white text-stone-900 hover:bg-[#C5A059] hover:text-white hover:shadow-lg hover:shadow-[#C5A059]/30'
+                                        ? 'bg-emerald-500 text-white shadow-lg shadow-emerald-500/30'
+                                        : 'bg-white text-stone-900 hover:bg-[#C5A059] hover:text-white hover:shadow-lg hover:shadow-[#C5A059]/30'
                                         }`}
                                 >
                                     {addedToCart ? (
